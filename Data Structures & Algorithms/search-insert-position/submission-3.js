@@ -1,0 +1,24 @@
+class Solution {
+    /**
+     * @param {number[]} nums
+     * @param {number} target
+     * @return {number}
+     */
+    searchInsert(nums, target) {
+
+        let start = 0;
+        let end = nums.length-1;
+        while(start < end) {
+            let mid = Math.floor((end-start)/2) + start;
+            if(nums[mid] == target) {
+                return mid;
+            } else if(nums[mid] > target) {
+                end = mid-1;
+            } else {
+                start = mid+1;
+            }
+        }
+
+        return target > nums[start] ? start+1 : start;
+    }
+}
